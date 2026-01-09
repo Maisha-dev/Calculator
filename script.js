@@ -19,3 +19,21 @@ console.log(divide(3, 0));
 let firstNumber = null;
 let secondNumber = null;
 let operator = null;
+
+function operate(operator, a, b) {
+  if (operator === "+") {
+    return add(a, b);
+  } else if (operator === "-") {
+    return subtract(a, b);
+  } else if (operator === "*") {
+    return multiply(a, b);
+  } else if (operator === "/") {
+    return divide(a, b);
+  } else {
+    return "Use a valid operator";
+  }
+}
+
+console.log(operate("+", 3, 0));
+console.log(operate("-", 3, 5));
+console.log(operate("/", 3, 0));
