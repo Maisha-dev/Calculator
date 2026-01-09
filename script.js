@@ -19,6 +19,7 @@ console.log(divide(3, 0));
 let firstNumber = null;
 let secondNumber = null;
 let operator = null;
+let shouldResetDisplay = false;
 
 function operate(operator, a, b) {
   if (operator === "+") {
@@ -34,6 +35,9 @@ function operate(operator, a, b) {
   }
 }
 
-console.log(operate("+", 3, 0));
+console.log(operate("+", 3, 5));
 console.log(operate("-", 3, 5));
 console.log(operate("/", 3, 0));
+
+let displayValue = 0;
+function inputNumber(number) {}
