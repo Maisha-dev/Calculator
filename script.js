@@ -13,3 +13,9 @@ function divide(a, b) {
   }
   return a / b;
 }
+
+console.log(divide(3, 0));
+
+let firstNumber = null;
+let secondNumber = null;
+let operator = null;
