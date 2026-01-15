@@ -9,7 +9,7 @@ function multiply(a, b) {
 }
 function divide(a, b) {
   if (b == 0) {
-    return "Try another number";
+    return null;
   }
   return a / b;
 }
@@ -54,11 +54,42 @@ function inputNumber(number) {
 }
 
 inputNumber("3");
-console.log(displayValue); // "3"
+console.log(displayValue);
 
 inputNumber("5");
-console.log(displayValue); // "35"
+console.log(displayValue);
 
 shouldResetDisplay = true;
+
+function handleOperator(op) {
+  if (firstNumber !== null && operator !== null) {
+    secondNumber = Number(displayValue);
+    const result = operate(operator, firstNumber, secondNumber);
+    displayValue = String(result);
+    firstNumber = result;
+  } else {
+    firstNumber = Number(displayValue);
+  }
+  operator = op;
+  shouldResetDisplay = true;
+}
+
+function handleEquals() {
+  if (firstNumber === null || operator === null) return;
+  secondNumber = Number(displayValue);
+  const result = operate(operator, firstNumber, secondNumber);
+
+  displayValue = String(result);
+  firstNumber = null;
+  operator = null;
+  shouldResetDisplay = true;
+}
+
+inputNumber("1");
+inputNumber("2");
+handleOperator("+");
 inputNumber("7");
-console.log(displayValue); // "7"
+handleOperator("-");
+inputNumber("1");
+handleEquals();
+console.log(displayValue);
