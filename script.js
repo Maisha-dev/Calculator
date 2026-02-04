@@ -21,6 +21,8 @@ let secondNumber = null;
 let operator = null;
 let shouldResetDisplay = false;
 
+let displayValue = "0";
+
 function operate(operator, a, b) {
   if (operator === "+") {
     return add(a, b);
@@ -39,7 +41,8 @@ console.log(operate("+", 3, 5));
 console.log(operate("-", 3, 5));
 console.log(operate("/", 3, 0));
 
-let displayValue = "0";
+const display = document.querySelector(".display");
+
 function inputNumber(number) {
   if (shouldResetDisplay) {
     displayValue = number;
@@ -52,6 +55,8 @@ function inputNumber(number) {
     displayValue += number;
   }
 }
+
+display.textContent = displayValue;
 
 inputNumber("3");
 console.log(displayValue);
@@ -92,4 +97,11 @@ inputNumber("7");
 handleOperator("-");
 inputNumber("1");
 handleEquals();
+
 console.log(displayValue);
+
+document.querySelectorAll("button").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    console.log(btn.textContent);
+  });
+});
