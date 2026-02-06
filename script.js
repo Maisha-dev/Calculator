@@ -14,8 +14,6 @@ function divide(a, b) {
   return a / b;
 }
 
-console.log(divide(3, 0));
-
 let firstNumber = null;
 let secondNumber = null;
 let operator = null;
@@ -102,6 +100,34 @@ console.log(displayValue);
 
 document.querySelectorAll("button").forEach((btn) => {
   btn.addEventListener("click", () => {
+    const value = btn.textContent;
+
+    if (!isNaN(value) || value === ".") {
+      inputNumber(value);
+      display.textContent = displayValue;
+    }
+    if (value === "+" || value === "-" || value === "*" || value === "/") {
+      firstNumber = Number(displayValue);
+      operator = value;
+      shouldResetDisplay = true;
+    }
+    console.log(firstNumber, operator, displayValue);
+
     console.log(btn.textContent);
+
+    if (value === "=") {
+      handleEquals();
+      display.textContent = displayValue;
+      return;
+    }
+
+    if (value.toLowerCase() === "c") {
+      displayValue = "0";
+      firstNumber = null;
+      secondNumber = null;
+      operator = null;
+      shouldResetDisplay = false;
+      display.textContent = displayValue;
+    }
   });
 });
